@@ -27,5 +27,5 @@ try {
 export const fb = {
   auth: firebase.auth(),
   storage: firebase.storage(),
-  firebase: firebase.firestore(),
+  firestore: firebase.firestore(),
 };

@@ -1,26 +1,17 @@
-import React, { useEffect } from 'react';
-
-// firebase
-import { fb } from "service";
+import { Route, Switch } from "react-router-dom";
+import { Login, Signup, Chat } from "components";
 
 export const App = () => {
-
-  useEffect(() => {
-    fb.firestorage.collection("chatUsers")
-      .where("userName", "==", "xolo")
-      .get()
-      .then(res => {
-        const user = res.docs[0]?.data();
-        console.log("this is our user data");
-      console.log(user);
-      console.log("this was our user data");
-    });
-  }, []);
-
   return (
-    <div>
-      Let's Build AIO Messenger
-    </div>
+    <>
+      <div className="app">
+        <Switch>
+        <Route exact path="/" component={Chat} />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+      </Switch> 
+      </div>
+    </>
   )
 }
 
