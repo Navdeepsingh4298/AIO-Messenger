@@ -6,13 +6,33 @@ import { Formik, Form } from "formik";
 import { validationSchema, defaultValues } from "./formikConfig";
 import { FormField } from "components";
 
+// firebase
+import { fb } from "service";
+
+
 export const Login = () => {
   const history = useHistory();
   const [serverError, setServerError] = useState("");
 
   const login = ({ email, password }, { setSubmitting }) => {
-    console.log("logging up: ", email, password);
-  }
+    fb.auth
+      .signInWithEmailAndPassword(email, password)
+      .then(res => {
+        if (!res.user) {
+          setServerError("We're having some problem while logging you in. Please try again later.");
+        }
+      })
+      .catch(err => {
+        if (err.code === 'auth/wrong-password') {
+          setServerError('Invalid Credentials');
+        } else if (err.code === 'auth/user-not-found') {
+          setServerError('No Account Found for this Email. Please Sign Up and then try again to Log In.');
+        } else {
+          setServerError('Something went wrong :(');
+        }
+      })
+      .finally(() => setSubmitting(false));
+  };
 
   return (
     <>
