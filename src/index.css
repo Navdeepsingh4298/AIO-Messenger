@@ -223,9 +223,11 @@ code {
   user-select: none;
 }
 .point-left {
-  width: 75px;
-  height: auto;
-  margin-right: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  padding-bottom: 10px;
 }
 .chat {
   width: 100%;
