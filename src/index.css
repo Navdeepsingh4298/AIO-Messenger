@@ -205,6 +205,7 @@ code {
 }
 .no-chat-selected {
   display: flex;
+  flex-direction: column;
   font-size: 28px;
   padding: 25px;
   color: #abaebb;
@@ -222,12 +223,12 @@ code {
   -ms-user-select: none;
   user-select: none;
 }
+.greetings{
+  margin: 15px auto;
+  
+}
 .point-left {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 10px;
-  padding-bottom: 10px;
+  margin: 35px auto 15px;
 }
 .chat {
   width: 100%;
